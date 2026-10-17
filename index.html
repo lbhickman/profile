@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>L. Brian Hickman, MD, MSc</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="L. Brian Hickman, MD, MSc. Neurologist at UCLA studying cognitive problems in older adults with epilepsy and the role of Alzheimer's disease.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400;7..72,600&family=Public+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: single reading column with a live EEG trace running under the masthead; sections are labeled like EEG montage channels. */
+:root {
+  --paper: #F4F6F8;
+  --surface: #FFFFFF;
+  --ink: #16202E;
+  --muted: #56627A;
+  --rule: #D5DBE4;
+  --accent: #1E5F86;
+  --trace: #B5651D;
+  --f-display: "Literata", Georgia, "Times New Roman", serif;
+  --f-body: "Public Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #0F1520; --surface: #161E2B; --ink: #E6EAF0; --muted: #9AA6B8;
+    --rule: #2A3546; --accent: #7DB8DC; --trace: #E39A55; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #0F1520; --surface: #161E2B; --ink: #E6EAF0; --muted: #9AA6B8;
+  --rule: #2A3546; --accent: #7DB8DC; --trace: #E39A55; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+img { max-width: 100%; }
+body {
+  background: var(--paper); color: var(--ink);
+  font-family: var(--f-body); font-size: 17px; line-height: 1.6;
+}
+.wrap {
+  max-width: 880px; margin: 0 auto;
+  padding-left: max(20px, env(safe-area-inset-left, 0px));
+  padding-right: max(20px, env(safe-area-inset-right, 0px));
+}
+a { color: var(--accent); text-underline-offset: 3px; }
+a:focus-visible { outline: 2px solid var(--trace); outline-offset: 2px; border-radius: 2px; }
+
+nav { border-bottom: 1px solid var(--rule); }
+nav .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; padding-block: 16px; }
+.brand { font-family: var(--f-mono); font-size: 13px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); text-decoration: none; }
+nav ul { display: flex; flex-wrap: wrap; gap: 18px; list-style: none; margin: 0; padding: 0; font-size: 15px; }
+nav ul a { color: var(--ink); text-decoration: none; }
+nav ul a:hover { color: var(--accent); }
+
+header .wrap { padding-block: 64px 24px; }
+.name { font-family: var(--f-display); font-size: 1.35rem; font-weight: 600; margin: 0 0 10px; }
+.eyebrow { font-family: var(--f-mono); font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--trace); margin: 0 0 14px; }
+h1 { font-family: var(--f-display); font-weight: 600; font-size: clamp(2.2rem, 6vw, 3.6rem); line-height: 1.08; margin: 0 0 18px; text-wrap: balance; letter-spacing: -0.01em; }
+.lede { font-size: 1.2rem; color: var(--muted); max-width: 40ch; margin: 0; }
+.creds { font-family: var(--f-mono); font-size: 13px; color: var(--muted); margin-top: 22px; display: flex; flex-wrap: wrap; gap: 8px 20px; }
+
+.trace { display: block; width: 100%; height: 90px; margin-top: 8px; }
+.trace path { fill: none; stroke: var(--trace); stroke-width: 1.6; stroke-linejoin: round; }
+.trace .base { stroke: var(--rule); stroke-width: 1; }
+.trace-cap { font-family: var(--f-mono); font-size: 11px; color: var(--muted); display: flex; justify-content: space-between; gap: 12px; }
+
+section .wrap { padding-block: 56px; border-top: 1px solid var(--rule); }
+section:first-of-type .wrap { border-top: 0; }
+.ch { font-family: var(--f-mono); font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin: 0 0 8px; }
+h2 { font-family: var(--f-display); font-weight: 600; font-size: 1.9rem; line-height: 1.2; margin: 0 0 20px; text-wrap: balance; }
+h3 { font-family: var(--f-display); font-weight: 600; font-size: 1.2rem; margin: 0 0 6px; }
+p { max-width: 65ch; }
+
+.aims { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 28px 32px; margin-top: 28px; }
+.aim { min-width: 0; border-left: 2px solid var(--rule); padding-left: 16px; }
+.aim p { margin: 0; color: var(--muted); font-size: 16px; }
+.tag { font-family: var(--f-mono); font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--accent); display: block; margin-bottom: 6px; }
+
+.projects { list-style: none; padding: 0; margin: 0; display: grid; gap: 0; }
+.projects li { display: grid; grid-template-columns: 150px 1fr; gap: 6px 24px; padding-block: 18px; border-bottom: 1px solid var(--rule); }
+.projects li:last-child { border-bottom: 0; }
+.status { font-family: var(--f-mono); font-size: 12px; color: var(--trace); padding-top: 4px; }
+.projects div { min-width: 0; }
+.projects p { margin: 0; color: var(--muted); font-size: 16px; }
+@media (max-width: 560px) { .projects li { grid-template-columns: 1fr; } }
+
+.clinic { background: var(--surface); border: 1px solid var(--rule); border-radius: 6px; padding: 24px; display: grid; gap: 8px; }
+.clinic p { margin: 0; }
+
+.links { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 16px; }
+.btn { font-size: 15px; font-weight: 500; padding: 9px 16px; border: 1px solid var(--accent); border-radius: 4px; text-decoration: none; }
+.btn:hover { background: var(--accent); color: var(--paper); }
+.todo { font-family: var(--f-mono); font-size: 12px; color: var(--trace); }
+
+.pubs, .talks { list-style: none; padding: 0; margin: 20px 0 0; display: grid; gap: 18px; }
+.pubs li, .talks li { display: grid; grid-template-columns: 80px 1fr; gap: 16px; }
+.pubs li > div, .talks li > div { min-width: 0; }
+.yr { font-family: var(--f-mono); font-size: 13px; color: var(--trace); padding-top: 3px; font-variant-numeric: tabular-nums; }
+.pubs a { color: var(--ink); text-decoration-color: var(--rule); font-weight: 500; }
+.pubs a:hover { color: var(--accent); }
+.cite { display: block; font-size: 15px; color: var(--muted); margin-top: 3px; }
+.talks .cite { display: block; }
+.phone strong, .sel { user-select: all; font-family: var(--f-mono); font-size: 0.95em; }
+.addr { color: var(--muted); font-size: 15px; }
+@media (max-width: 480px) { .pubs li, .talks li { grid-template-columns: 1fr; gap: 2px; } }
+.cv { display: grid; grid-template-columns: 130px 1fr; gap: 10px 24px; font-size: 16px; }
+.cv dt { font-family: var(--f-mono); font-size: 13px; color: var(--muted); padding-top: 2px; font-variant-numeric: tabular-nums; }
+.cv dd { margin: 0; min-width: 0; }
+
+footer .wrap { padding-block: 32px 48px; border-top: 1px solid var(--rule); font-size: 14px; color: var(--muted); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .trace .sig { stroke-dasharray: 2400; stroke-dashoffset: 0; animation: draw 2.4s ease-out; }
+  @keyframes draw { from { stroke-dashoffset: 2400; } to { stroke-dashoffset: 0; } }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="#top">L. Brian Hickman, MD, MSc</a>
+    <ul>
+      <li><a href="#research">Research</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#clinic">Clinic</a></li>
+      <li><a href="#publications">Publications</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header id="top">
+  <div class="wrap">
+    <p class="name">L. Brian Hickman, MD, MSc</p>
+    <p class="eyebrow">Neurology · Epilepsy · Cognition</p>
+    <h1>I study cognitive problems in older adults with epilepsy.</h1>
+    <p class="lede">Why does memory and thinking decline in some older adults with epilepsy, and do conditions like Alzheimer's disease contribute?</p>
+    <div class="creds">
+      <span>Epilepsy Fellow, UCLA Neurology</span>
+      <span>NINDS UE5 Trainee</span>
+      <span>Board-certified Neurology &amp; Clinical Neurophysiology</span>
+    </div>
+    <svg class="trace" viewBox="0 0 800 90" preserveAspectRatio="none" aria-hidden="true">
+      <line class="base" x1="0" y1="45" x2="800" y2="45"/>
+      <path class="sig" d="M0 45 C20 40 30 50 50 45 S80 38 100 46 S130 52 150 44 S180 40 200 46 S230 50 250 44 S280 41 300 46 S330 49 350 45 L362 44 L370 8 L378 78 L388 30 C400 22 415 60 430 46 S460 40 480 45 L492 44 L500 12 L508 74 L518 32 C530 26 545 58 560 46 S590 42 610 45 S640 50 660 44 S690 40 710 46 S740 50 760 44 S790 42 800 45"/>
+    </svg>
+    <div class="trace-cap"><span>F7–T3</span><span>1 s</span><span>50 µV</span></div>
+  </div>
+</header>
+
+<main>
+<section id="research">
+  <div class="wrap">
+    <p class="ch">Ch 1 · Research</p>
+    <h2>Two questions drive my work</h2>
+    <p>Many older adults with epilepsy notice problems with memory and thinking, and they face a higher risk of later dementia. We don't yet know why. Seizures, medications, and other illnesses may all play a part, and Alzheimer's disease may be quietly present in some patients years before symptoms are obvious.</p>
+    <div class="aims">
+      <div class="aim">
+        <span class="tag">Question 1</span>
+        <h3>Why does cognitive decline happen?</h3>
+        <p>What changes in the brain explain memory and thinking problems in older adults with epilepsy.</p>
+      </div>
+      <div class="aim">
+        <span class="tag">Question 2</span>
+        <h3>Do conditions like Alzheimer's disease contribute?</h3>
+        <p>Whether early Alzheimer's pathology drives both the seizures and the cognitive symptoms in some patients.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <p class="ch">Ch 2 · Current projects</p>
+    <h2>Active projects</h2>
+    <ul class="projects">
+      <li><span class="status">Blood biomarkers</span><div><h3>Blood biomarkers of Alzheimer's disease in older adults with epilepsy</h3><p>Using simple blood tests to see whether Alzheimer's-related changes are present in patients with epilepsy.</p></div></li>
+      <li><span class="status">Cognition over time</span><div><h3>How cognition changes over time</h3><p>Following memory and thinking in older adults with epilepsy over years to see who declines and how quickly.</p></div></li>
+      <li><span class="status">Epilepsy types</span><div><h3>Are specific types of epilepsy caused by early Alzheimer's disease?</h3><p>Looking for seizure patterns that may be an early sign of Alzheimer's rather than a separate condition.</p></div></li>
+      <li><span class="status">Prediction</span><div><h3>Can we predict who will develop dementia?</h3><p>Combining clinical, biomarker, and EEG information to identify patients at highest risk.</p></div></li>
+      <li><span class="status">Brain signals</span><div><h3>Brain signals behind cognitive decline</h3><p>Using EEG to find electrical signatures that explain why someone with epilepsy is losing cognitive function.</p></div></li>
+    </ul>
+    <h3 style="margin-top:36px">Long term</h3>
+    <ul class="projects">
+      <li><span class="status">Treatment</span><div><h3>Are there medications that treat cognitive symptoms in epilepsy?</h3><p>Turning what we learn about causes into clinical trials of treatments that protect memory and thinking.</p></div></li>
+    </ul>
+  </div>
+</section>
+
+<section id="clinic">
+  <div class="wrap">
+    <p class="ch">Ch 3 · Clinical care</p>
+    <h2>Epilepsy in Older Adults Clinic</h2>
+    <div class="clinic">
+      <p>I see patients with new or established seizures later in life at UCLA, with attention to memory, medication burden, and overall brain health.</p>
+      <p class="phone">Appointments and referrals: <strong>310-794-1195</strong></p>
+      <p class="addr">UCLA Seizure Disorder Center · 710 Westwood Plaza, Suite 1250, Los Angeles, CA 90095</p>
+    </div>
+  </div>
+</section>
+
+<section id="publications">
+  <div class="wrap">
+    <p class="ch">Ch 4 · Publications</p>
+    <h2>Selected publications</h2>
+    <p>16 peer-reviewed publications. First-author and co-first-author work below.</p>
+    <ol class="pubs">
+      <li><span class="yr">2025</span><div><a href="https://pubmed.ncbi.nlm.nih.gov/41051912/">Late-onset epilepsy of unknown etiology is more treatment-responsive than acquired lesional late-onset epilepsy.</a><span class="cite"><b>Hickman LB</b>, Pandey B, Fish A, et al., Vossel K, Stern JM. <i>Epilepsia Open</i>. 2025;10(6):1847–1859.</span></div></li>
+      <li><span class="yr">2023</span><div><a href="https://pubmed.ncbi.nlm.nih.gov/?term=Clinical%2C+imaging%2C+and+biomarker+evidence+of+amyloid-+and+tau-related+neurodegeneration+in+late-onset+epilepsy">Clinical, imaging, and biomarker evidence of amyloid- and tau-related neurodegeneration in late-onset epilepsy of unknown etiology.</a><span class="cite"><b>Hickman LB</b>, Stern JM, Silverman DHS, Salamon N, Vossel K. <i>Front Neurol</i>. 2023;14:1241638.</span></div></li>
+      <li><span class="yr">2022</span><div><a href="https://pubmed.ncbi.nlm.nih.gov/36540138/">Self-reported severity and causes of traumatic brain injury in patients with epileptic or functional seizures.</a><span class="cite"><b>Hickman LB</b>, Patel AB, Dubey I, et al., Stern JM, Kerr WT. <i>Neurol Clin Pract</i>. 2022;e189–e198.</span></div></li>
+      <li><span class="yr">2021</span><div><a href="https://pubmed.ncbi.nlm.nih.gov/33652270/">Postictal generalized electroencephalographic suppression following electroconvulsive therapy: temporal characteristics and impact of anesthetic regimen.</a><span class="cite"><b>Hickman LB</b>, Kafashan M, Labonte AK, et al., Palanca BJA. <i>Clin Neurophysiol</i>. 2021;132(4):977–983.</span></div></li>
+      <li><span class="yr">2020</span><div><a href="https://pubmed.ncbi.nlm.nih.gov/33137572/">Voltage-based automated detection of postictal generalized electroencephalographic suppression: algorithm development and validation.</a><span class="cite"><b>Hickman LB</b>, Hogan RE, Labonte AK, et al., Palanca BJA. <i>Clin Neurophysiol</i>. 2020;131(12):2817–2825.</span></div></li>
+      <li><span class="yr">2019</span><div><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6676227/">Duration of EEG suppression does not predict recovery time or degree of cognitive impairment after general anaesthesia in human volunteers.</a><span class="cite">Shortal BP*, <b>Hickman LB*</b>, Mak-McCully RA, et al., Palanca BJA. <i>Br J Anaesth</i>. 2019;123(2):206–218. *Co-first authors.</span></div></li>
+    </ol>
+    <p class="cite" style="margin-top:20px">Book chapter: <b>Hickman LB</b>, Stern JM. Abnormal Focal and Generalized Slowing. In: Tatum WO IV, Freund B, eds. <i>Handbook of EEG Interpretation</i>, 4th ed. Demos Medical. In press.</p>
+    <div class="links">
+      <a class="btn" href="https://pubmed.ncbi.nlm.nih.gov/?term=Hickman+LB%5BAuthor%5D">Full list on PubMed</a>
+    </div>
+
+    <h3 style="margin-top:40px">Recent and upcoming presentations</h3>
+    <ul class="talks">
+      <li><span class="yr">Dec 2026</span><div>Plasma p-tau217 and Aβ42/40 ratio remain stable following acute seizures in adults with epilepsy. <span class="cite">American Epilepsy Society, Denver</span></div></li>
+      <li><span class="yr">Oct 2026</span><div>Elevated plasma p-tau217 in older adults with epilepsy and cognitive impairment. <span class="cite">American Neurological Association, San Diego; also AAIC 2026, London</span></div></li>
+      <li><span class="yr">Oct 2025</span><div>Late-onset unexplained epilepsy and acquired lesional late-onset epilepsy have similar rates of dementia and patterns of cortical atrophy. <span class="cite">Oral presentation, Defining the Landscape of Late-Onset Unexplained Epilepsy, Epilepsy Foundation New England. Junior Investigator Award.</span></div></li>
+      <li><span class="yr">Sep 2025</span><div>Left posterior cingulate cortex atrophy is associated with dementia in late-onset epilepsy of unknown etiology. <span class="cite">American Neurological Association, Baltimore</span></div></li>
+      <li><span class="yr">Jul 2025</span><div>Interictal epileptiform discharges and Alzheimer's disease-associated cortical atrophy in late-onset epilepsy of unknown etiology. <span class="cite">AAIC 2025, Toronto</span></div></li>
+    </ul>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap">
+    <p class="ch">Ch 5 · Training</p>
+    <h2>Background</h2>
+    <dl class="cv">
+      <dt>2026–now</dt><dd>Epilepsy Fellow, UCLA Seizure Disorder Center</dd>
+      <dt>2024–now</dt><dd>NINDS UE5 Postdoctoral Research Scholar, UCLA Neurology. Mentors: Keith Vossel, John Stern, Daniel Silverman</dd>
+      <dt>2025–2026</dt><dd>Epilepsy Clinical Instructor, UCLA Seizure Disorder Center</dd>
+      <dt>2024–2025</dt><dd>Clinical Neurophysiology Fellow, UCLA Seizure Disorder Center</dd>
+      <dt>2021–2024</dt><dd>Neurology Residency, UCLA; Chief Resident 2023–2024</dd>
+      <dt>2020–2021</dt><dd>Internal Medicine Internship, UC Irvine</dd>
+      <dt>2020</dt><dd>MD, Washington University School of Medicine</dd>
+      <dt>2019</dt><dd>MSc in Clinical Investigation, Washington University School of Medicine</dd>
+      <dt>2015</dt><dd>BA in Psychology, University of Notre Dame, summa cum laude</dd>
+      <dt>Boards</dt><dd>Neurology (2024); Clinical Neurophysiology (2025), ABPN</dd>
+    </dl>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <p class="ch">Ch 6 · Contact</p>
+    <h2>Collaborate</h2>
+    <p>I welcome collaborations on cognition, biomarkers, and EEG in older adults with epilepsy, and I'm glad to talk with students interested in clinical research.</p>
+    <p class="contact-line">Email: <strong class="sel">leonardhickman@mednet.ucla.edu</strong></p>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Department of Neurology, David Geffen School of Medicine at UCLA</span>
+    <span>Updated October 2026</span>
+  </div>
+</footer>
+</body>
+</html>
