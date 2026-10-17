@@ -63,10 +63,15 @@ h1 { font-family: var(--f-display); font-weight: 600; font-size: clamp(2.2rem, 6
 
 .portrait { float: right; width: 200px; height: auto; aspect-ratio: 4 / 5; object-fit: cover; margin: 4px 0 16px 32px; border-radius: 6px; border: 1px solid var(--rule); background: var(--surface); }
 @media (max-width: 560px) { .portrait { width: 104px; margin-left: 16px; } }
-.trace { clear: both; display: block; width: 100%; height: 90px; margin-top: 8px; }
+.trace-wrap { clear: both; position: relative; margin-top: 8px; padding-bottom: 16px; font-family: var(--f-mono); font-size: 11px; color: var(--muted); }
+.trace { display: block; width: 100%; height: 120px; }
 .trace path { fill: none; stroke: var(--trace); stroke-width: 1.6; stroke-linejoin: round; }
 .trace .base { stroke: var(--rule); stroke-width: 1; }
-.trace-cap { font-family: var(--f-mono); font-size: 11px; color: var(--muted); display: flex; justify-content: space-between; gap: 12px; }
+.trace .cal { stroke: var(--muted); stroke-width: 1.5; stroke-linejoin: miter; }
+.cal-label { position: absolute; line-height: 14px; white-space: nowrap; }
+.cal-ch { left: 0; top: 0; }
+.cal-uv { right: calc(13.75% + 6px); top: 90px; }
+.cal-s { left: 86.25%; width: 12.5%; top: 116px; text-align: center; }
 
 section .wrap { padding-block: 56px; border-top: 1px solid var(--rule); }
 section:first-of-type .wrap { border-top: 0; }
@@ -146,11 +151,16 @@ footer .wrap { padding-block: 32px 48px; border-top: 1px solid var(--rule); font
       <span>NINDS UE5 Trainee</span>
       <span>Board-certified Neurology &amp; Clinical Neurophysiology</span>
     </div>
-    <svg class="trace" viewBox="0 0 800 90" preserveAspectRatio="none" aria-hidden="true">
-      <line class="base" x1="0" y1="45" x2="800" y2="45"/>
-      <path class="sig" d="M0 45 C20 40 30 50 50 45 S80 38 100 46 S130 52 150 44 S180 40 200 46 S230 50 250 44 S280 41 300 46 S330 49 350 45 L362 44 L370 8 L378 78 L388 30 C400 22 415 60 430 46 S460 40 480 45 L492 44 L500 12 L508 74 L518 32 C530 26 545 58 560 46 S590 42 610 45 S640 50 660 44 S690 40 710 46 S740 50 760 44 S790 42 800 45"/>
-    </svg>
-    <div class="trace-cap"><span>F7–T3</span><span>1 s</span><span>50 µV</span></div>
+    <div class="trace-wrap">
+      <svg class="trace" viewBox="0 0 800 120" preserveAspectRatio="none" aria-hidden="true">
+        <line class="base" x1="0" y1="45" x2="800" y2="45" vector-effect="non-scaling-stroke"/>
+        <path class="sig" vector-effect="non-scaling-stroke" d="M0 45 C20 40 30 50 50 45 S80 38 100 46 S130 52 150 44 S180 40 200 46 S230 50 250 44 S280 41 300 46 S330 49 350 45 L362 44 L370 8 L378 78 L388 30 C400 22 415 60 430 46 S460 40 480 45 L492 44 L500 12 L508 74 L518 32 C530 26 545 58 560 46 S590 42 610 45 S640 50 660 44 S690 40 710 46 S740 50 760 44 S790 42 800 45"/>
+        <path class="cal" vector-effect="non-scaling-stroke" d="M690 82 L690 112 L790 112"/>
+      </svg>
+      <span class="cal-label cal-ch">F7–T3</span>
+      <span class="cal-label cal-uv">50 µV</span>
+      <span class="cal-label cal-s">1 s</span>
+    </div>
   </div>
 </header>
 
