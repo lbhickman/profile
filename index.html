@@ -6,8 +6,6 @@
 <title>L. Brian Hickman, MD, MSc</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <meta name="description" content="L. Brian Hickman, MD, MSc. Neurologist at UCLA studying cognitive problems in older adults with epilepsy and the role of Alzheimer's disease.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400;7..72,600&family=Public+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
 <style>
 /* Layout: single reading column with a live EEG trace running under the masthead; sections are labeled like EEG montage channels. */
 :root {
@@ -16,21 +14,22 @@
   --ink: #16202E;
   --muted: #56627A;
   --rule: #D5DBE4;
-  --accent: #1E5F86;
-  --trace: #B5651D;
-  --f-display: "Literata", Georgia, "Times New Roman", serif;
-  --f-body: "Public Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
-  --f-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --accent: #005587;  /* UCLA Darker Blue */
+  --trace: #2774AE;   /* UCLA Blue */
+  /* UCLA web standard: Helvetica, then Arial, then Roboto */
+  --f-display: "Helvetica Neue", Helvetica, Arial, Roboto, sans-serif;
+  --f-body: "Helvetica Neue", Helvetica, Arial, Roboto, sans-serif;
+  --f-mono: "Helvetica Neue", Helvetica, Arial, Roboto, sans-serif;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     --paper: #0F1520; --surface: #161E2B; --ink: #E6EAF0; --muted: #9AA6B8;
-    --rule: #2A3546; --accent: #7DB8DC; --trace: #E39A55; color-scheme: dark;
+    --rule: #2A3546; --accent: #8BB8E8; --trace: #8BB8E8; color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
   --paper: #0F1520; --surface: #161E2B; --ink: #E6EAF0; --muted: #9AA6B8;
-  --rule: #2A3546; --accent: #7DB8DC; --trace: #E39A55; color-scheme: dark;
+  --rule: #2A3546; --accent: #8BB8E8; --trace: #8BB8E8; color-scheme: dark;
 }
 * { box-sizing: border-box; }
 html, body { margin: 0; }
